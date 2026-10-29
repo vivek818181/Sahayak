@@ -1,0 +1,185 @@
+/* components/SchemeComparisonModal.css — 3D Canva-Style Comparison Modal */
+
+.comparison-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 21, 40, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comparison-modal-card {
+  background: #ffffff;
+  border-radius: var(--radius-3xl);
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 32px 80px -10px rgba(15, 23, 42, 0.35),
+    0 12px 24px -4px rgba(13, 148, 136, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  animation: fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comparison-modal-header {
+  padding: var(--space-5) var(--space-8);
+  border-bottom: 1.5px solid var(--color-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.comparison-modal-title {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-navy-950);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-heading);
+}
+
+.comparison-modal-body {
+  padding: var(--space-6) var(--space-8);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.comparison-feature-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: 100px;
+}
+
+.comparison-feature-label {
+  font-weight: 700;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray-500);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.comparison-scheme-card {
+  border: 1.5px solid rgba(226, 232, 240, 0.9);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-5);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition: transform var(--transition-bounce), box-shadow var(--transition-bounce);
+}
+
+.comparison-scheme-card:hover {
+  border-color: var(--color-teal-400);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-3d-hover);
+}
+
+.comparison-card-header {
+  min-height: 100px;
+  border-bottom: 3px solid var(--color-teal-500);
+  padding-bottom: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comparison-card-name {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-navy-950);
+  margin-bottom: var(--space-1);
+  font-family: var(--font-heading);
+}
+
+.comparison-cell {
+  font-size: var(--text-sm);
+  color: var(--color-gray-700);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comparison-cell-strong {
+  font-weight: 800;
+  color: var(--color-navy-950);
+  font-family: var(--font-heading);
+}
+
+.comparison-tag-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.comparison-tag {
+  font-size: 11px;
+  font-weight: 600;
+  background: #f1f5f9;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--color-navy-800);
+  border: 1px solid #cbd5e1;
+}
+
+.comparison-modal-footer {
+  padding: var(--space-4) var(--space-8);
+  border-top: 1.5px solid var(--color-gray-100);
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  .comparison-feature-col {
+    display: none;
+  }
+  .comparison-feature-mobile-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--color-teal-700);
+    margin-bottom: 2px;
+  }
+}
+
+@media (min-width: 769px) {
+  .comparison-feature-mobile-label {
+    display: none;
+  }
+}

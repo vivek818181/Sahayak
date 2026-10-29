@@ -1,0 +1,210 @@
+/* components/layout/AnnouncementBar.css — Smooth Animated Scheme Notice Bar */
+
+.ann-bar-container {
+  width: 100%;
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.07) 0%, rgba(6, 182, 212, 0.09) 50%, rgba(99, 102, 241, 0.07) 100%);
+  border-bottom: 1.5px solid rgba(124, 58, 237, 0.2);
+  transition: background 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  z-index: 85;
+}
+
+.ann-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 8px var(--space-6);
+  min-height: 44px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.ann-bar-inner:hover {
+  background: rgba(124, 58, 237, 0.05);
+}
+
+.ann-bar-inner:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: -2px;
+}
+
+/* Badge Tag */
+.ann-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+  position: relative;
+}
+
+.ann-pulse-glow {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 8px #22d3ee;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.ann-bell-icon {
+  animation: bellRing 3s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes bellRing {
+  0%, 85%, 100% { transform: rotate(0); }
+  90% { transform: rotate(15deg); }
+  95% { transform: rotate(-15deg); }
+}
+
+/* Ticker Content */
+.ann-ticker-wrapper {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+
+.ann-ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.ann-ticker-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
+  color: var(--color-navy-900);
+  font-weight: 600;
+  animation: tickerSlide 25s linear infinite;
+  padding-left: 20px;
+}
+
+.ann-bar-inner:hover .ann-ticker-content {
+  animation-play-state: paused;
+}
+
+@keyframes tickerSlide {
+  0% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ann-ticker-content {
+    animation: none !important;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ann-bell-icon {
+    animation: none !important;
+  }
+}
+
+.ann-sparkle-inline {
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.ann-ticker-title {
+  color: #6d28d9;
+}
+
+/* Action CTA */
+.ann-cta-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  color: #7c3aed;
+  font-size: 11px;
+  font-weight: 700;
+  transition: all var(--transition-smooth);
+}
+
+.ann-bar-inner:hover .ann-cta-indicator {
+  background: #ffffff;
+  border-color: #7c3aed;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
+  transform: translateX(2px);
+}
+
+.ann-cta-arrow {
+  transition: transform var(--transition-smooth);
+}
+
+.ann-bar-inner:hover .ann-cta-arrow {
+  transform: translateX(2px);
+}
+
+.ann-ticker-empty {
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  font-style: italic;
+}
+
+[data-theme="dark"] .ann-ticker-empty {
+  color: #94a3b8;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .ann-bar-container {
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.15) 0%, rgba(6, 182, 212, 0.12) 50%, rgba(99, 102, 241, 0.14) 100%);
+  border-bottom-color: rgba(124, 58, 237, 0.35);
+}
+
+[data-theme="dark"] .ann-bar-inner:hover {
+  background: rgba(124, 58, 237, 0.12);
+}
+
+[data-theme="dark"] .ann-ticker-content {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .ann-sparkle-inline {
+  color: #c084fc;
+}
+
+[data-theme="dark"] .ann-ticker-title {
+  color: #c084fc;
+}
+
+[data-theme="dark"] .ann-cta-indicator {
+  background: rgba(15, 28, 52, 0.85);
+  border-color: rgba(124, 58, 237, 0.4);
+  color: #c084fc;
+}
+
+[data-theme="dark"] .ann-bar-inner:hover .ann-cta-indicator {
+  background: #13223e;
+  border-color: #a855f7;
+  color: #e9d5ff;
+}
+
+@media (max-width: 640px) {
+  .ann-bar-inner {
+    padding: 6px var(--space-4);
+  }
+}

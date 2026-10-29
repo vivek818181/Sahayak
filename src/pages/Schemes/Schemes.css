@@ -1,0 +1,180 @@
+/* pages/Schemes/Schemes.css — 3D Canva-Style Scheme Cards */
+
+.schemes-header {
+  margin-bottom: var(--space-6);
+}
+
+.schemes-notice {
+  margin-bottom: var(--space-8);
+  max-width: 760px;
+}
+
+.schemes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+/* 3D Scheme Card */
+.scheme-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: var(--radius-3xl);
+  padding: var(--space-8);
+  border: 1.5px solid rgba(226, 232, 240, 0.9);
+  box-shadow: var(--shadow-3d-card);
+  transition: transform var(--transition-bounce), box-shadow var(--transition-bounce), border-color var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.scheme-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--scheme-color, var(--color-teal-500));
+}
+
+.scheme-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-3d-hover);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.scheme-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+/* 3D Icon Medallion */
+.scheme-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform var(--transition-bounce);
+}
+
+.scheme-card:hover .scheme-icon {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.scheme-name {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-navy-950);
+  margin-bottom: 2px;
+  line-height: var(--leading-tight);
+}
+
+/* Fields */
+.scheme-field {
+  margin-bottom: var(--space-5);
+}
+
+.scheme-field-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.scheme-field-value {
+  font-size: var(--text-sm);
+  color: var(--color-gray-700);
+  line-height: var(--leading-relaxed);
+}
+
+/* 3D Stats Tile */
+.scheme-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: var(--radius-2xl);
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--color-gray-200);
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.03);
+}
+
+.scheme-stat-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-gray-500);
+  margin-bottom: 2px;
+}
+
+.scheme-stat-value {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-navy-950);
+  font-family: var(--font-heading);
+}
+
+.scheme-stat-note {
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+}
+
+/* Eligibility list */
+.scheme-eligibility-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.scheme-eligibility-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-gray-700);
+  line-height: var(--leading-relaxed);
+}
+
+.scheme-eligibility-list li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--scheme-color, var(--color-teal-500));
+  flex-shrink: 0;
+  margin-top: 7px;
+  box-shadow: 0 0 6px var(--scheme-color, var(--color-teal-500));
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .schemes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .schemes-grid {
+    grid-template-columns: 1fr;
+  }
+}
